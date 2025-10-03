@@ -2,9 +2,9 @@ public class Character {
     public String name;
     public int level;
     public int health;
-    int melee_damage;
-    int magic_damage;
-    int ranged_damage;
+    public int melee_damage;
+    public int magic_damage;
+    public int ranged_damage;
 
     public Character(String name, int level, int health, int melee_damage, int magic_damage, int ranged_damage){
         this.name = name;
