@@ -1,11 +1,17 @@
 public class Character {
-    private String name;
-    private int level;
-    private int health;
+    public String name;
+    public int level;
+    public int health;
+    int melee_damage;
+    int magic_damage;
+    int ranged_damage;
 
-    public Character(String name, int level, int health){
+    public Character(String name, int level, int health, int melee_damage, int magic_damage, int ranged_damage){
         this.name = name;
         this.level = level;
         this.health = health;
+        this.melee_damage = melee_damage;
+        this.magic_damage = magic_damage;
+        this.ranged_damage = ranged_damage;
     }
 }
