@@ -9,7 +9,7 @@ public class Main {
         Warrior warrior = new Warrior(userName, 1, 175, 50, 0, 0);
 
         int n = 1;
-        boolean repeat=false;
+        boolean repeatChar=false;
 
         do {
             Scanner newCharacter = new Scanner(System.in);
@@ -18,19 +18,19 @@ public class Main {
             charClass = newCharacter.nextLine();
 
             n++;
-            repeat=false;
+            repeatChar=false;
             switch (charClass.toLowerCase()) {
                 case "warrior":
-                    System.out.println(warrior); // after entering "yes" in the second switch, for whatever reason it prints the stats once again
+                    System.out.println(warrior); //For whatever reason it prints out the stats again after the second switch finishes
                     break;
                 default:
                     System.out.println("No available class selected, try again.");
-                    repeat=true;
+                    repeatChar=true;
             }
-        } while (repeat);
+        } while (repeatChar);
 
         int i = 1;
-        boolean repeating=false;
+        boolean repeatFight=false;
 
         do {
             Scanner encounter = new Scanner(System.in);
@@ -39,7 +39,7 @@ public class Main {
             fight = encounter.nextLine();
 
             i++;
-            repeating=false;
+            repeatFight=false;
             switch (fight.toLowerCase()) {
                 case "yes":
                     System.out.println(warrior);
@@ -47,8 +47,8 @@ public class Main {
                 case "no":
                     break;
                 default:
-                    repeating=true;
+                    repeatFight=true;
             }
-        } while (repeating);
+        } while (repeatFight);
     }
 }
