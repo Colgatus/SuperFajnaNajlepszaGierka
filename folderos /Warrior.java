@@ -5,10 +5,10 @@ public class Warrior extends Character{
     }
     @Override
     public String toString(){
-        return "Name = " + name +
-                " | Level = " + level +
-                " | Health = " + health +
-                " | Melee damage = " + melee_damage +
+        return "Name: " + name +
+                " | Level: " + level +
+                " | Health: " + health +
+                " | Melee damage: " + melee_damage +
                 " | Doesn't use magic" +
                 " | Doesn't use ranged";
     }
