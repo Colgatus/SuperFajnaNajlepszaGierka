@@ -11,15 +11,12 @@ public class Main {
         System.out.println("Pick a class: melee, magic, ranged");
         charClass = newCharacter.nextLine();
 
-        switch(charClass){
-            case "melee":
-                System.out.println(Warrior); //Doesn't work, can't get it to print out the values from object
-                break;
-        }
-
         Warrior warrior = new Warrior(userName, 1, 175, 50, 0, 0);
 
-
-
+        switch(charClass.toLowerCase()){
+            case "melee":
+                System.out.println(warrior);
+                break;
+        }
     }
 }
