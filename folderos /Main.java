@@ -6,17 +6,17 @@ public class Main {
         System.out.println("Enter username");
         userName = newName.nextLine();
 
-        Scanner newCharacter = new Scanner(System.in);
-        String charClass;
-        System.out.println("Pick a class: melee, magic, ranged");
-        charClass = newCharacter.nextLine();
-
         Warrior warrior = new Warrior(userName, 1, 175, 50, 0, 0);
 
         int n = 1;
         boolean repeat=false;
 
         do {
+            Scanner newCharacter = new Scanner(System.in);
+            String charClass;
+            System.out.println("Pick a class: melee, magic, ranged");
+            charClass = newCharacter.nextLine();
+
             n++;
             repeat=false;
             switch (charClass.toLowerCase()) {
