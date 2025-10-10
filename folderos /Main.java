@@ -13,10 +13,20 @@ public class Main {
 
         Warrior warrior = new Warrior(userName, 1, 175, 50, 0, 0);
 
-        switch(charClass.toLowerCase()){
-            case "melee":
-                System.out.println(warrior);
-                break;
-        }
+        int n = 1;
+        boolean repeat=false;
+
+        do {
+            n++;
+            repeat=false;
+            switch (charClass.toLowerCase()) {
+                case "melee":
+                    System.out.println(warrior);
+                    break;
+                default:
+                    System.out.println("No available class selected, try again.");
+                    repeat=true;
+            }
+        } while (repeat);
     }
 }
