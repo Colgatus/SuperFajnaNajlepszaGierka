@@ -14,13 +14,13 @@ public class Main {
         do {
             Scanner newCharacter = new Scanner(System.in);
             String charClass;
-            System.out.println("Pick a class: melee, magic, ranged");
+            System.out.println("Pick a class: Warrior, Mage, Archer");
             charClass = newCharacter.nextLine();
 
             n++;
             repeat=false;
             switch (charClass.toLowerCase()) {
-                case "melee":
+                case "warrior":
                     System.out.println(warrior);
                     break;
                 default:
