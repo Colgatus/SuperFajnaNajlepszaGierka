@@ -21,7 +21,7 @@ public class Main {
             repeatChar=false;
             switch (charClass.toLowerCase()) {
                 case "warrior":
-                    System.out.println(warrior); //For whatever reason it prints out the stats again after the second switch finishes
+                    System.out.println(warrior);
                     break;
                 default:
                     System.out.println("No available class selected, try again.");
@@ -42,7 +42,7 @@ public class Main {
             repeatFight=false;
             switch (fight.toLowerCase()) {
                 case "yes":
-                    System.out.println(warrior);
+                    System.out.println("Fight start!");
                     break;
                 case "no":
                     break;
