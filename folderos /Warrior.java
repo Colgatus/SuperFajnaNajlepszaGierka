@@ -1,6 +1,5 @@
 public class Warrior extends Character{
-
-    Warrior(String name, int level, int health){
-        super(name, level, health);
+    public Warrior(String name){
+        super(name, 1, 90, 15, 5, 35);
     }
 }
