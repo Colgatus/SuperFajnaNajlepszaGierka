@@ -23,7 +23,9 @@ public class Pve {
         System.out.println("\n" + "Pojawił się przeciwnik: " + enemy.name);
 
         if (player.level > enemy.level){
-            enemy.level = player.level;
+            for(int i = player.level; i < enemy.level; i++){
+                enemy.levelUp();
+            }
         }
 
 
