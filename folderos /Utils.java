@@ -43,9 +43,7 @@ public class Utils {
     }
 
 
-    public static void chooseGameMode(List<Character> characters, int gameMode){
-
-        Scanner sc = new Scanner(System.in);
+    public static void chooseGameMode(List<Character> characters, int gameMode, Scanner sc){
 
         switch (gameMode){
             case 1:
@@ -58,7 +56,7 @@ public class Utils {
                 System.out.println("\n" + "Wybierz drugiego gracza: ");
                 int playerTwo = sc.nextInt();
 
-                Pvp.pvp(characters, playerOne, playerTwo);
+                Pvp.pvp(characters, playerOne, playerTwo, sc);
 
                 break;
 
@@ -69,7 +67,7 @@ public class Utils {
                 System.out.println("\n" + "Wybierz postać: ");
                 int player = sc.nextInt();
 
-                Pve.pve(characters.get(player));
+                Pve.pve(characters.get(player), sc);
 
                 break;
 
@@ -78,7 +76,7 @@ public class Utils {
         }
     }
 
-    public static int verifcationOfData(Scanner sc){
+    public static int verificationOfData(Scanner sc){
 
         int value;
 
