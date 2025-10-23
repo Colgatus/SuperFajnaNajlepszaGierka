@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 void main() {
     int running = 1;
@@ -7,63 +9,50 @@ void main() {
 
     while (running > 0){
 
-        System.out.println("Wybierz operację: 1: Kreator postaci || 2: Walka || 3: wyjdź z gry");
-        int operacja = sc.nextInt();
+        System.out.println("\n" + "Wybierz operację: 1: Kreator postaci || 2: Walka || 3: wyjdź z gry");
+        int operacja = Utils.verifcationOfData(sc);
 
         switch (operacja){
             case 1:
-                System.out.println("Wybierz klasę: 1: Warrior || 2: Archer || 3: Mage");
-                int klasa = sc.nextInt();
+                System.out.println("\n" + "Wybierz klasę: 1: Warrior || 2: Archer || 3: Mage");
+                int characterClass = Utils.verifcationOfData(sc);
 
-                System.out.println("Nazwij swoją postać: ");
-                String nazwa = sc.next();
-
-                switch (klasa){
-                    case 1:
-                        System.out.println("Utworzono nową postać - " + nazwa);
-                        characters.add(new Warrior(nazwa));
-                        break;
-                    case 2:
-                        System.out.println("Utworzono nową postać - " + nazwa);
-                        characters.add(new Archer(nazwa));
-                        break;
-                    case 3:
-                        System.out.println("Utworzono nową postać - " + nazwa);
-                        characters.add(new Mage(nazwa));
-                        break;
+                if (characterClass < 1 || characterClass > 3){
+                    System.out.println("\n" + "Nie istnieje taka klasa (wybierz numer 1 || 2 || 3)");
+                    break;
                 }
+
+                System.out.println("\n" + "Nazwij swoją postać: ");
+                String name = sc.next();
+
+                if (name.length() < 4){
+                    System.out.println("\n" + "Nazwa postaci wymaga co najmniej 4 znaków");
+                    break;
+                }else if (name.length() > 20){
+                    System.out.println("\n" + "Nazwa postaci nie może być większa niż 20 znaków");
+                    break;
+                }
+
+                Utils.addCreatedCharactersToTable(characters, characterClass, name);
 
                 break;
 
             case 2:
-                System.out.println("Wybierz tryb gry: 1: PvP || 2: PvE");
-                int trybGry = sc.nextInt();
+                System.out.println("\n" + "Wybierz tryb gry: 1: PvP || 2: PvE");
+                int gameMode = Utils.verifcationOfData(sc);
 
-                switch (trybGry){
-                    case 1:
-                        for (Character c : characters){
-                            c.showStats();
-                            System.out.println();
-                        }
-
-                        break;
-
-                    case 2:
-
-                        break;
-                }
+                Utils.chooseGameMode(characters, gameMode);
 
                 break;
 
             case 3:
-                System.out.println("Dziękujemy za grę");
+                System.out.println("\n" + "Dziękujemy za grę");
                 running = 0;
                 break;
 
             default:
-                System.out.println("error");
+                System.out.println("\n" + "Nie istnieje taka operacja (wybierz numer 1 || 2 || 3)");
                 break;
         }
     }
 }
-
