@@ -3,19 +3,19 @@ import java.util.List;
 import java.util.ArrayList;
 
 void main() {
-    int running = 1;
+    boolean running = true;
     Scanner sc = new Scanner(System.in);
     List<Character> characters = new ArrayList<>();
 
-    while (running > 0){
+    while (running){
 
         System.out.println("\n" + "Wybierz operację: 1: Kreator postaci || 2: Walka || 3: wyjdź z gry");
-        int operacja = Utils.verifcationOfData(sc);
+        int operacja = Utils.verificationOfData(sc);
 
         switch (operacja){
             case 1:
                 System.out.println("\n" + "Wybierz klasę: 1: Warrior || 2: Archer || 3: Mage");
-                int characterClass = Utils.verifcationOfData(sc);
+                int characterClass = Utils.verificationOfData(sc);
 
                 if (characterClass < 1 || characterClass > 3){
                     System.out.println("\n" + "Nie istnieje taka klasa (wybierz numer 1 || 2 || 3)");
@@ -39,15 +39,15 @@ void main() {
 
             case 2:
                 System.out.println("\n" + "Wybierz tryb gry: 1: PvP || 2: PvE");
-                int gameMode = Utils.verifcationOfData(sc);
+                int gameMode = Utils.verificationOfData(sc);
 
-                Utils.chooseGameMode(characters, gameMode);
+                Utils.chooseGameMode(characters, gameMode, sc);
 
                 break;
 
             case 3:
                 System.out.println("\n" + "Dziękujemy za grę");
-                running = 0;
+                running = false;
                 break;
 
             default:
