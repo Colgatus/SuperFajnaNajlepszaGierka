@@ -17,6 +17,36 @@ public abstract class Character implements Attackable {
         this.rangedDamage = 10;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getMeleeDamage() {
+        return meleeDamage;
+    }
+
+    public int getMagicDamage() {
+        return magicDamage;
+    }
+
+    public int getRangedDamage() {
+        return rangedDamage;
+    }
+
+
+
     public void showStats() {
         System.out.println(name + " || LVL: " + level + " || HP: " + health + "/" + maxHealth +
                 " || Melee: " + meleeDamage +
@@ -34,6 +64,11 @@ public abstract class Character implements Attackable {
         System.out.println(name + " awansował na poziom " + level + "!");
         showStats();
     }
+
+    public void healFull() {
+        health = maxHealth;
+    }
+
 
     @Override
     public void attack(Character target, int attackType) {
