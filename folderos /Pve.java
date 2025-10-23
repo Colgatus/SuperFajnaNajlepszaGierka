@@ -3,9 +3,8 @@ import java.util.Scanner;
 
 public class Pve {
 
-    public static void pve(Character player){
+    public static void pve(Character player, Scanner sc){
 
-        Scanner sc = new Scanner(System.in);
         Random rand = new Random();
 
 
@@ -16,20 +15,18 @@ public class Pve {
         };
 
 
-        System.out.println("\n" + "Walka PvP Rozpoczęta");
+        System.out.println("\n" + "Walka PvE Rozpoczęta");
 
 
         Character enemy = enemyNpc[rand.nextInt(enemyNpc.length)];
-        System.out.println("\n" + "Pojawił się przeciwnik: " + enemy.name);
+        System.out.println("\n" + "Pojawił się przeciwnik: " + enemy.getName());
 
-        if (player.level > enemy.level){
-            for(int i = player.level; i < enemy.level; i++){
-                enemy.levelUp();
-            }
+        while (enemy.getLevel() < player.getLevel()) {
+            enemy.levelUp();
         }
 
 
-        while (player.health > 0 && enemy.health > 0){
+        while (player.getHealth() > 0 && enemy.getHealth() > 0){
 
             System.out.println("\n" + "Twoja postać:");
             player.showStats();
@@ -39,12 +36,12 @@ public class Pve {
             enemy.showStats();
 
             System.out.println("\n" + "Wybierz typ ataku: 1: melee || 2: ranged || 3: magic");
-            int attackType = Utils.verifcationOfData(sc);
+            int attackType = Utils.verificationOfData(sc);
             player.attack(enemy, attackType);
 
 
-            if (enemy.health <= 0) {
-                System.out.println("\n" + enemy.name + " został pokonany przez " + player.name);
+            if (enemy.getHealth() <= 0) {
+                System.out.println("\n" + enemy.getName() + " został pokonany przez " + player.getName());
                 player.levelUp();
                 break;
             }
@@ -54,9 +51,9 @@ public class Pve {
             enemy.attack(player, enemyAttackType);
 
 
-            if (player.health <= 0) {
-                System.out.println("\n" + player.name + " poległ w bitwie z " + enemy.name);
-                player.health = player.maxHealth;
+            if (player.getHealth() <= 0) {
+                System.out.println("\n" + player.getName() + " poległ w bitwie z " + enemy.getName());
+                player.healFull();
                 break;
             }
         }
