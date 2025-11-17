@@ -1,0 +1,97 @@
+db_connection.php
+
+  <?php
+    $DB_HOST = 'localhost';
+    $DB_USER = 'root';
+    $DB_PASS = '';
+    $DB_SCHEMA = 'Andrzej_Pilarczyk';
+
+    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_SCHEMA);
+
+    if(!$conn){
+        die("Błąd połączenia: ".mysqli_connect_error());
+    }
+
+?>
+
+create_record.php
+
+  <html>
+    <head>
+</head>
+<body>
+    <h1>Dodawanie nowego rekordu</h1>
+    <form method="POST">
+    <label>Imie</label>
+    <input type="text" name="name">
+    <label>Nazwisko</label>
+    <input type="text" name="surname">
+    <label>Email</label>
+    <input type="text" name="email">
+    <button type="submit">Dodaj</button>
+</form>
+</body>
+</html>
+<?php
+    require_once("db_connection.php");
+
+    $name = $_POST["name"];
+    $surname = $_POST["surname"];
+    $email = $_POST["email"];
+
+
+    if($name != 'Admin'){
+        $sql = "INSERT INTO users (name,surname,email) VALUES ('$name','$surname','$email')";
+    } else {
+    echo "Błąd - nie można mieć Admin jako name". mysqli_error($conn);
+}
+
+    if(mysqli_query($conn, $sql)){
+        echo "Rekord dodany";
+    } else{
+        echo "Błąd ". mysqli_error($conn);
+    }
+?>
+
+list.php
+
+  <?php 
+    include("db_connection.php");
+
+    $sql = "SELECT * FROM Users";
+    $result = mysqli_query($conn, $sql);
+    echo "<table>";
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            echo "<tr>";
+            echo "<td>". $row["name"]." "."</td>";
+            echo "<td>". $row["surname"]." "."</td>";
+            echo "<td>". $row["email"]." "."</td>";
+            echo "</tr>";
+        }
+    }else{
+        echo "Brak pobranych rekordów.";
+    }
+    echo "</table>";
+
+
+    function redirect(){
+        if(mysqli_query($conn, $sql)){
+            header()
+        }
+    }
+?>
+
+<html>
+    <head>
+        <style>
+tr td {
+  border: 1pt solid black;
+}
+        </style>
+</head>
+<body>
+<button type="submit" onclick=> Wróć do poprzedniej strony</button>
+
+</body>
+</html>
